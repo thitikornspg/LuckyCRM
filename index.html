@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H308R7GEC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9H308R7GEC');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuckyCRM: The Content Intelligence Engine</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js (For Infographic & Dashboard) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+        }
+        .thai-font {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .markdown-prose p { margin-bottom: 0.5rem; }
+        .markdown-prose strong { color: #059669; font-weight: 600; }
+        .markdown-prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 0.5rem; }
+        .markdown-prose h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; color: #1e293b; }
+        .markdown-prose a { color: #4f46e5; text-decoration: underline; }
+
+        /* Infographic Specific Styles */
+        .card-shadow { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1); }
+        .chart-container { position: relative; width: 100%; max-width: 600px; height: 300px; margin: 0 auto; }
+        .arrow-down { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid #cbd5e1; margin: 10px auto; }
+        
+        /* View Switcher - Top Right */
+        .view-switcher {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 5px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            gap: 5px;
+        }
+        .view-btn {
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+        .view-btn.active {
+            background: #4f46e5;
+            color: white;
+            box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
+        }
+        .view-btn.inactive {
+            background: transparent;
+            color: #64748b;
+        }
+        .view-btn.inactive:hover {
+            background: #f1f5f9;
+            color: #334155;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- VIEW SWITCHER -->
+    <nav class="view-switcher">
+        <button id="btn-blueprint" class="view-btn active" onclick="switchView('blueprint')">📄 Blueprint</button>
+        <button id="btn-app" class="view-btn inactive" onclick="switchView('app')">📱 Live App</button>
+    </nav>
+
+    <!-- ================= PAGE 1: INFOGRAPHIC BLUEPRINT (RESTORED) ================= -->
+    <div id="infographic-view">
+        <!-- 1. Header -->
+        <header class="bg-white py-24 px-6 text-center border-b border-slate-200">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-block px-4 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-bold tracking-wide uppercase mb-4">
+                    Project Blueprint
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-slate-900">
+                    Lucky<span class="text-indigo-600">CRM</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-500 mb-8">
+                    The Content Intelligence Engine
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    Transforming complex lottery data into <strong>actionable stories</strong> for content creators. 
+                    We move from "Data 3 Days" to "1 Click 3 Seconds," empowering the team to hunt for "Lucky Newbies" and "Jackpot Legends" instantly.
+                </p>
+                <div class="mt-8">
+                    <button onclick="switchView('app')" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-indigo-500/30 flex items-center gap-2 mx-auto">
+                        Launch Live App 🚀
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Core Values Section -->
+        <section class="py-16 px-6 bg-slate-50">
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-3xl font-bold text-slate-800 mb-4 text-center">Core Values</h3>
+                <p class="text-center text-slate-500 mb-12 max-w-2xl mx-auto">
+                    Why we are building this platform. It's not just a dashboard; it's a storytelling machine.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-indigo-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Speed to Content</h4>
+                        <p class="text-slate-600">
+                            Real-time access to winner lists. Content teams get actionable leads seconds after the lottery announcement.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-emerald-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🎭</div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Personalized Storytelling</h4>
+                        <p class="text-slate-600">
+                            AI transforms "Stats" into "Stories." We don't just see numbers; we see "The 5-Year Fighter" or "The First-Time Lucky."
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-amber-500 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-2">Actionable Insight</h4>
+                        <p class="text-slate-600">
+                            Data ready for immediate action. Call, Interview, or Shoot Content right away. No more manual excel filtering.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Data Overview (The Source of Truth) -->
+        <section class="py-16 px-6 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12 text-center">
+                    <h3 class="text-3xl font-bold text-slate-800 mb-4">Mining the "High Luck" Segment</h3>
+                    <p class="text-slate-500 max-w-3xl mx-auto">
+                        Analysis of the <strong>"Golden Segment"</strong>: Customers who bought &le; 100 tickets but won > 15 rounds out of 25. 
+                        This anomaly indicates high engagement potential for viral content.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Profile Card -->
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase">Target Persona</span>
+                                <h4 class="text-2xl font-bold text-slate-900 mt-2 thai-font">คุณคมสาร (Komsan)</h4>
+                                <p class="text-slate-500">Prov: Samut Prakan • Age: 54</p>
+                            </div>
+                            <div class="text-5xl">🧔🏻‍♂️</div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                                <div class="text-3xl font-bold text-indigo-600">16/25</div>
+                                <div class="text-xs text-slate-400 font-bold uppercase">Winning Rounds</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm text-center">
+                                <div class="text-3xl font-bold text-amber-500">~38</div>
+                                <div class="text-xs text-slate-400 font-bold uppercase">Tickets/Round</div>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-600 italic border-l-4 border-indigo-400 pl-4">
+                            "A statistical anomaly. Despite buying a moderate amount, Komsan wins nearly 64% of the rounds he participates in. Ideal for a 'How does he do it?' interview."
+                        </p>
+                    </div>
+
+                    <!-- Visualization Column -->
+                    <div class="space-y-8">
+                        <!-- Chart 1 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                            <h5 class="text-sm font-bold text-slate-400 uppercase tracking-wide mb-4 text-center">Prize Type Distribution (Komsan)</h5>
+                            <div class="chart-container">
+                                <canvas id="prizeChart"></canvas>
+                            </div>
+                        </div>
+                        <!-- Chart 2 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
+                            <h5 class="text-sm font-bold text-slate-400 uppercase tracking-wide mb-4 text-center">Winning Frequency Comparison</h5>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="comparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. System Architecture -->
+        <section class="py-16 px-6 bg-slate-900 text-white">
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-3xl font-bold mb-12 text-center">System Integration Architecture</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center relative">
+                    <!-- Node 1 -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 relative z-10">
+                        <div class="text-5xl mb-4">🗄️</div>
+                        <h4 class="text-xl font-bold text-amber-400 mb-2">Databricks</h4>
+                        <p class="text-slate-400 text-sm mb-4">Gold Tables</p>
+                        <ul class="text-left text-sm text-slate-300 space-y-2 bg-slate-900/50 p-4 rounded-lg">
+                            <li>• Cleaned Customer Data</li>
+                            <li>• Purchase History</li>
+                            <li>• Winning Logs</li>
+                        </ul>
+                    </div>
+                    <!-- Connector -->
+                    <div class="hidden md:block absolute left-1/3 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-700 -z-0"></div>
+                    <!-- Node 2 -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-indigo-500/50 shadow-[0_0_30px_rgba(79,70,229,0.15)] relative z-10">
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold text-indigo-400 mb-2">FastAPI</h4>
+                        <p class="text-slate-400 text-sm mb-4">on Google Cloud Run</p>
+                        <div class="text-left text-sm text-slate-300 bg-slate-900/50 p-4 rounded-lg">
+                            <p class="mb-2"><strong class="text-indigo-300">Input:</strong> JSON Data + Prompt</p>
+                            <p><strong class="text-emerald-300">Output:</strong> Marketing Scripts</p>
+                        </div>
+                    </div>
+                    <!-- Connector -->
+                    <div class="hidden md:block absolute right-1/3 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-700 -z-0"></div>
+                    <!-- Node 3 -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 relative z-10">
+                        <div class="text-5xl mb-4">💻</div>
+                        <h4 class="text-xl font-bold text-emerald-400 mb-2">React App</h4>
+                        <p class="text-slate-400 text-sm mb-4">Frontend UI</p>
+                        <ul class="text-left text-sm text-slate-300 space-y-2 bg-slate-900/50 p-4 rounded-lg">
+                            <li>• User Interface</li>
+                            <li>• Filter & Search</li>
+                            <li>• "AI Insight" Button</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Use Cases -->
+        <section class="py-16 px-6 bg-slate-50">
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-3xl font-bold text-slate-800 mb-12 text-center">Content Creation Workflows</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Use Case 1 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+                        <div class="bg-indigo-600 p-6 text-white">
+                            <h4 class="text-xl font-bold flex items-center gap-2">
+                                <span>🎥</span> The Lucky Newbie Hunter
+                            </h4>
+                            <p class="text-indigo-200 text-sm mt-1">Target: Viral TikTok Content</p>
+                        </div>
+                        <div class="p-8">
+                            <ol class="relative border-l border-slate-200 ml-3 space-y-8">
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-4 ring-white text-indigo-600 font-bold text-sm">1</span>
+                                    <h5 class="font-bold text-slate-900">Set Filter</h5>
+                                    <p class="text-sm text-slate-500">Status: New User + Won Immediately + Location: BKK</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-4 ring-white text-indigo-600 font-bold text-sm">2</span>
+                                    <h5 class="font-bold text-slate-900">Select User</h5>
+                                    <p class="text-sm text-slate-500">System finds "Khun Somchai" (Bought 1st time, won 2 digits).</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-amber-100 rounded-full -left-4 ring-4 ring-white text-amber-600 font-bold text-sm">3</span>
+                                    <h5 class="font-bold text-slate-900">AI Action ✨</h5>
+                                    <div class="mt-2 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-600 thai-font">
+                                        <strong>Hook:</strong> "เชื่อไหมครับ? ซื้อใบแรกในชีวิต ก็รับโชคเลย!"<br>
+                                        <strong>CTA:</strong> "ใครอยากดวงดีแบบนี้ กดลิงก์หน้าโปรไฟล์เลย"
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- Use Case 2 -->
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+                        <div class="bg-emerald-600 p-6 text-white">
+                            <h4 class="text-xl font-bold flex items-center gap-2">
+                                <span>🏆</span> The Jackpot Story
+                            </h4>
+                            <p class="text-emerald-200 text-sm mt-1">Target: Emotional/Inspirational Content</p>
+                        </div>
+                        <div class="p-8">
+                            <ol class="relative border-l border-slate-200 ml-3 space-y-8">
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-emerald-100 rounded-full -left-4 ring-4 ring-white text-emerald-600 font-bold text-sm">1</span>
+                                    <h5 class="font-bold text-slate-900">Direct Search</h5>
+                                    <p class="text-sm text-slate-500">Input Winner ID to retrieve full profile.</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-emerald-100 rounded-full -left-4 ring-4 ring-white text-emerald-600 font-bold text-sm">2</span>
+                                    <h5 class="font-bold text-slate-900">Profile Reveal</h5>
+                                    <p class="text-sm text-slate-500">Data shows: "Bought for 5 years, same number every round."</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-amber-100 rounded-full -left-4 ring-4 ring-white text-amber-600 font-bold text-sm">3</span>
+                                    <h5 class="font-bold text-slate-900">AI Action ✨</h5>
+                                    <div class="mt-2 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-600 thai-font">
+                                        <strong>Theme:</strong> "ความพยายามที่ไม่สูญเปล่า ของนักสู้ชีวิต"<br>
+                                        <strong>Mood:</strong> Inspirational, Heartwarming.
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
+            <p class="font-bold text-slate-200 text-lg mb-2">LuckyCRM Project</p>
+            <p class="text-sm">Powered by Databricks, Python FastAPI, React & Google Cloud Run</p>
+        </footer>
+    </div>
+
+    <!-- ================= PAGE 2: LIVE APP (REACT ROOT) ================= -->
+    <div id="root" style="display: none;"></div>
+
+    <!-- SCRIPT: View Switcher Logic -->
+    <script>
+        function switchView(view) {
+            const infogDiv = document.getElementById('infographic-view');
+            const rootDiv = document.getElementById('root');
+            const btnBlueprint = document.getElementById('btn-blueprint');
+            const btnApp = document.getElementById('btn-app');
+
+            if (view === 'blueprint') {
+                infogDiv.style.display = 'block';
+                rootDiv.style.display = 'none';
+                btnBlueprint.classList.add('active');
+                btnBlueprint.classList.remove('inactive');
+                btnApp.classList.add('inactive');
+                btnApp.classList.remove('active');
+            } else {
+                infogDiv.style.display = 'none';
+                rootDiv.style.display = 'block';
+                btnBlueprint.classList.remove('active');
+                btnBlueprint.classList.add('inactive');
+                btnApp.classList.remove('inactive');
+                btnApp.classList.add('active');
+                
+                // Trigger resize so ChartJS knows the container size changed
+                setTimeout(() => {
+                    window.dispatchEvent(new Event('resize'));
+                }, 100);
+            }
+        }
+    </script>
+
+    <!-- SCRIPT: Chart Logic (Blueprint) -->
+    <script>
+        window.addEventListener('load', function() {
+            if (!document.getElementById('prizeChart')) return;
+
+            function wrapLabels(labels, maxChars) {
+                return labels.map(label => {
+                    if (label.length <= maxChars) return label;
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = words[0];
+                    for (let i = 1; i < words.length; i++) {
+                        if ((currentLine + " " + words[i]).length <= maxChars) {
+                            currentLine += " " + words[i];
+                        } else {
+                            lines.push(currentLine);
+                            currentLine = words[i];
+                        }
+                    }
+                    lines.push(currentLine);
+                    return lines;
+                });
+            }
+
+            const ctxPrize = document.getElementById('prizeChart').getContext('2d');
+            const rawPrizeLabels = ['Last 2 Digits', 'Last 3 Digits', 'Front 3 Digits', 'Other Prizes'];
+            new Chart(ctxPrize, {
+                type: 'doughnut',
+                data: {
+                    labels: wrapLabels(rawPrizeLabels, 16),
+                    datasets: [{
+                        data: [65, 20, 10, 5], 
+                        backgroundColor: ['#4f46e5', '#10b981', '#f59e0b', '#cbd5e1'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { family: "'Outfit', sans-serif" }, boxWidth: 12 } }
+                    }
+                }
+            });
+
+            const ctxComp = document.getElementById('comparisonChart').getContext('2d');
+            const rawCompLabels = ['Average User', 'Target Segment (High Luck)'];
+            new Chart(ctxComp, {
+                type: 'bar',
+                data: {
+                    labels: wrapLabels(rawCompLabels, 16),
+                    datasets: [{
+                        label: 'Win Rate (%)',
+                        data: [12, 64],
+                        backgroundColor: ['#cbd5e1', '#10b981'],
+                        borderRadius: 8,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, max: 100, grid: { display: false } }, x: { grid: { display: false } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        });
+    </script>
+
+    <!-- SCRIPT: React App -->
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useMemo } = React;
+
+        // --- ICONS ---
+        const Icons = {
+            LayoutGrid: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>,
+            Users: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+            Database: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>,
+            Search: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>,
+            Calendar: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>,
+            ChevronDown: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>,
+            RefreshCw: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>,
+            DownloadCloud: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><polyline points="12 12 12 21"/><polyline points="8 17 12 21 16 17"/></svg>,
+            Filter: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
+            MapPin: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+            Trophy: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2h-6c-2.76 0-5 .67-5 4v5a5 5 0 0 0 10 0V6c0-3.33-2.24-4-5-4z"/></svg>,
+            Ticket: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>,
+            Sparkles: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M5 9v4"/><path d="M9 9v4"/></svg>,
+            Key: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/><path d="M10 18v2"/><path d="M7 22h3"/></svg>,
+            X: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>,
+            Server: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>,
+            Phone: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
+            Facebook: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>,
+            Zap: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+            MessageSquare: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+            Settings: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
+            RefreshCcw: (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+        };
+
+        // --- MOCK DATA (Fallback) ---
+        const MOCK_DATA = [
+            { id: 1, customer: 'คมสาร ด่านสมบัติสกุล', province: 'สมุทรปราการ', gender: 'MALE', age: 54, round_date: '2025-01-17', tickets_bought: 38, total_wins: 16, segment: 'High Luck', last_prize: 'เลขท้าย 2 ตัว' },
+            { id: 2, customer: 'สมหญิง รักดี', province: 'กรุงเทพมหานคร', gender: 'FEMALE', age: 45, round_date: '2025-01-17', tickets_bought: 25, total_wins: 18, segment: 'High Luck', last_prize: 'เลขท้าย 3 ตัว' },
+            { id: 3, customer: 'วิชัย ใจมั่น', province: 'เชียงใหม่', gender: 'MALE', age: 62, round_date: '2025-02-01', tickets_bought: 90, total_wins: 20, segment: 'VIP', last_prize: 'รางวัลที่ 5' },
+            { id: 4, customer: 'นภา ฟ้าสว่าง', province: 'ขอนแก่น', gender: 'FEMALE', age: 38, round_date: '2025-02-01', tickets_bought: 12, total_wins: 15, segment: 'Lucky Star', last_prize: 'เลขหน้า 3 ตัว' },
+            { id: 5, customer: 'คุณสมชาย ยั่งยืน', province: 'สมุทรปราการ', gender: 'MALE', age: 41, round_date: '2025-02-01', tickets_bought: 44, total_wins: 10, segment: 'Potential', last_prize: '-' },
+            { id: 6, customer: 'สุดาพร มีสุข', province: 'เชียงใหม่', gender: 'FEMALE', age: 29, round_date: '2025-02-01', tickets_bought: 8, total_wins: 4, segment: 'Newbie', last_prize: 'รางวัลที่ 2' },
+            { id: 7, customer: 'อานนท์ คนจริง', province: 'กรุงเทพมหานคร', gender: 'MALE', age: 35, round_date: '2025-02-01', tickets_bought: 105, total_wins: 2, segment: 'Whale', last_prize: '-' }
+        ];
+
+        const DICTIONARY_DATA = [
+            { field: 'roundDateod', desc: 'วันทีงวดสลาก (Lottery Round Date)', source: 'Transaction' },
+            { field: 'countprizeround', desc: 'จำนวนงวดที่ถูกรางวัลสะสม (Winning Frequency)', source: 'Aggregated Data' },
+            { field: 'all_lt_count', desc: 'จำนวนสลากทั้งหมดที่ซื้อในงวดนั้น', source: 'Transaction' },
+            { field: 'Segment', desc: 'กลุ่มลูกค้า (High Luck = ถูก > 15 งวด)', source: 'Analytics Model' },
+        ];
+
+        // --- PROMPT TEMPLATES (UPDATED) ---
+        const PROMPT_TEMPLATES = {
+            tiktok: {
+                label: "TikTok Viral Key Content",
+                icon: <Icons.Sparkles size={16} />,
+                prompt: (c) => `Act as a Marketing Strategist & Content Creator. Analyze this customer: Name ${c.customer}, Age ${c.age}, Province ${c.province}, Total Wins ${c.total_wins}. \n\nTask: 1. Describe their persona in marketing terms (e.g., The Hopeful Local, The Statistical Gamer). \n2. Propose 3 TikTok content angles to target them (Viral, Educational, Emotional) including Hook and Visual Idea. \n\nOutput in Thai language.`
+            },
+            marketing: {
+                label: "Expert Marketing Strategy",
+                icon: <Icons.Trophy size={16} />,
+                prompt: (c) => `Act as a Senior Marketing Consultant. Analyze this customer: Name ${c.customer}, Age ${c.age}, Province ${c.province}, Total Wins ${c.total_wins}, Tickets Bought ${c.tickets_bought}. \n\nTask: 1. Deep dive into Customer Persona & Pain Points. \n2. Recommended Marketing Strategy (Retention vs Upsell). \n3. Key Messaging to use in campaigns. \n\nOutput in Thai language.`
+            },
+            custom: {
+                label: "Your Prompt",
+                icon: <Icons.MessageSquare size={16} />,
+                isCustom: true
+            }
+        };
+
+        // --- GEMINI SERVICE ---
+        const callGeminiAPI = async (prompt, apiKey) => {
+            const cleanKey = apiKey.trim();
+            if (!cleanKey) throw new Error("Please enter your Gemini API Key first.");
+            
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${cleanKey}`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    const msg = errorData.error?.message || "";
+                    
+                    if (msg.includes("leaked") || (response.status === 400 && msg.includes("key"))) {
+                         throw new Error("API Key Invalid/Leaked: Please generate a new key in Settings.");
+                    }
+                    
+                    throw new Error(msg || `API Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                if (!data.candidates || data.candidates.length === 0) {
+                    throw new Error("No response generated. It might be blocked by safety filters.");
+                }
+
+                return data.candidates[0].content.parts[0].text;
+            } catch (err) {
+                console.error("Gemini Error:", err);
+                throw err;
+            }
+        };
+
+        // --- DATA NORMALIZER ---
+        const normalizeData = (rawData) => {
+            if (!Array.isArray(rawData)) return [];
+            return rawData.map((item, index) => {
+                return {
+                    id: item.id || item.user_id || index + 1,
+                    customer: item.customer || item.full_name || item.name || 'Unknown',
+                    province: item.province || item.Province || 'Unknown',
+                    gender: item.gender || item.Gender || 'Unknown',
+                    age: item.age || item.Age || 0,
+                    round_date: item.round_date || item.RoundDate || 'Unknown',
+                    tickets_bought: item.tickets_bought || item.ticket_count || item.total_items_in_round || 0,
+                    total_wins: item.total_wins || item.total_win_rounds || 0,
+                    segment: item.segment || item.Segment || 'General',
+                    last_prize: item.last_prize || item.prize_type || '-'
+                };
+            });
+        };
+
+        // --- COMPONENTS ---
+        
+        const SidebarItem = ({ icon, label, active = false, onClick }) => (
+            <button 
+                onClick={onClick}
+                className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 group ${
+                active 
+                    ? 'bg-slate-900 text-white shadow-lg shadow-slate-200' 
+                    : 'text-slate-500 hover:bg-emerald-50 hover:text-emerald-600'
+                }`}
+            >
+                <span className={`${active ? 'text-emerald-400' : 'text-slate-400 group-hover:text-emerald-500 transition-colors'}`}>
+                {icon}
+                </span>
+                <span>{label}</span>
+            </button>
+        );
+
+        // --- DASHBOARD COMPONENT ---
+        const DashboardView = ({ data }) => {
+            const chartRef1 = useRef(null);
+            const chartRef2 = useRef(null);
+            
+            const provinceData = useMemo(() => {
+                const counts = {};
+                data.forEach(d => counts[d.province] = (counts[d.province] || 0) + 1);
+                return { labels: Object.keys(counts), values: Object.values(counts) };
+            }, [data]);
+
+            const segmentData = useMemo(() => {
+                const counts = {};
+                data.forEach(d => counts[d.segment] = (counts[d.segment] || 0) + 1);
+                return { labels: Object.keys(counts), values: Object.values(counts) };
+            }, [data]);
+
+            useEffect(() => {
+                if (!chartRef1.current || !chartRef2.current) return;
+
+                const ctx1 = chartRef1.current.getContext('2d');
+                const chart1 = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: provinceData.labels,
+                        datasets: [{ label: 'Customers by Province', data: provinceData.values, backgroundColor: '#4f46e5', borderRadius: 8 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
+
+                const ctx2 = chartRef2.current.getContext('2d');
+                const chart2 = new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: segmentData.labels,
+                        datasets: [{ data: segmentData.values, backgroundColor: ['#10b981', '#f59e0b', '#3b82f6', '#ef4444'], borderWidth: 0 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+
+                return () => { chart1.destroy(); chart2.destroy(); };
+            }, [provinceData, segmentData]);
+
+            return (
+                <div className="space-y-6 animate-in slide-in-from-bottom-5 fade-in duration-500">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                            <h4 className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Total Customers</h4>
+                            <div className="text-4xl font-bold text-slate-900">{data.length}</div>
+                            <div className="text-emerald-500 text-sm font-medium mt-1">Active in this round</div>
+                        </div>
+                        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                            <h4 className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Top Segment</h4>
+                            <div className="text-4xl font-bold text-slate-900">{segmentData.labels[0] || '-'}</div>
+                            <div className="text-indigo-500 text-sm font-medium mt-1">Most frequent group</div>
+                        </div>
+                        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                            <h4 className="text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Total Wins (Accum)</h4>
+                            <div className="text-4xl font-bold text-slate-900">{data.reduce((acc, curr) => acc + curr.total_wins, 0)}</div>
+                            <div className="text-amber-500 text-sm font-medium mt-1">Across all users</div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 h-80">
+                            <h4 className="text-slate-800 font-bold mb-4">Distribution by Province</h4>
+                            <div className="relative h-60 w-full"><canvas ref={chartRef1}></canvas></div>
+                        </div>
+                        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 h-80">
+                            <h4 className="text-slate-800 font-bold mb-4">Customer Segments</h4>
+                            <div className="relative h-60 w-full"><canvas ref={chartRef2}></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('dashboard');
+            const [isLoading, setIsLoading] = useState(false);
+            const [data, setData] = useState(MOCK_DATA);
+            const [notification, setNotification] = useState(null);
+            const [dataSource, setDataSource] = useState('mock'); 
+            
+            // SMART DEFAULT URL: Updated to your new Cloud Run URL (Asia Southeast) - Final
+            const defaultUrl = 'https://my-api-service-61827023210.asia-southeast1.run.app/api/customers';
+            const [apiEndpoint, setApiEndpoint] = useState(() => {
+                const saved = localStorage.getItem('api_endpoint');
+                // Always force default if saved is old render/localhost/other region/wrong endpoint to prevent confusion
+                if (saved && (saved.includes('localhost') || saved.includes('onrender') || !saved.includes('api/customers'))) return defaultUrl;
+                return saved || defaultUrl;
+            });
+
+            // AI Logic
+            const [apiKey, setApiKey] = useState(localStorage.getItem('gemini_api_key') || '');
+            const [showSettingsModal, setShowSettingsModal] = useState(false);
+            // Updated aiModal state to include customPrompt
+            const [aiModal, setAiModal] = useState({ open: false, data: null, result: '', loading: false, template: 'tiktok', customPrompt: '' });
+
+            // Filters
+            const [province, setProvince] = useState('all');
+            const [gender, setGender] = useState('all');
+            const [roundDate, setRoundDate] = useState('all'); 
+            const uniqueRounds = Array.from(new Set(data.map(item => item.round_date))).sort();
+
+            const fetchData = async () => {
+                setIsLoading(true);
+                if (dataSource === 'live') {
+                    // Use the endpoint exactly as defined/saved
+                    let targetUrl = apiEndpoint;
+                    
+                    // Extract domain for friendly notification
+                    let domain = "API";
+                    try {
+                        const urlObj = new URL(targetUrl);
+                        domain = urlObj.hostname;
+                        if (domain.includes('run.app')) domain = "Google Cloud Run";
+                    } catch (e) {}
+                    
+                    setNotification(`Connecting to ${domain}...`);
+                    try {
+                        const res = await fetch(targetUrl);
+                        if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+                        
+                        const rawData = await res.json();
+                        
+                        // INTELLIGENT PARSING: Handle if FastAPI wraps data in {"data": [...]}
+                        let finalData = rawData;
+                        if (rawData && rawData.data) {
+                            finalData = rawData.data;
+                            // Check if it's a stringified JSON (sometimes happens with Python str())
+                            if (typeof finalData === 'string') {
+                                try {
+                                    // Try to replace Python tuples () to JS arrays [] just in case, though ideally backend sends JSON
+                                    // This is a safety catch.
+                                    let fixedStr = finalData.replace(/\(/g, '[').replace(/\)/g, ']').replace(/'/g, '"').replace(/None/g, 'null');
+                                    finalData = JSON.parse(fixedStr);
+                                } catch (e) {
+                                    // If parsing fails, use fallback or empty
+                                    console.warn("Failed to parse stringified data", e);
+                                }
+                            }
+                        }
+
+                        setData(normalizeData(finalData));
+                        setNotification("Connected to Live Backend Successfully!");
+                    } catch (err) {
+                        console.warn("Backend Error:", err);
+                        
+                        // --- IMPROVED ERROR HANDLING FOR USER ---
+                        let errorMsg = err.message;
+                        if (errorMsg.includes("Failed to fetch")) {
+                            errorMsg = "CORS Error (Blocked by Cloud Run). You must update python code.";
+                        }
+                        
+                        setNotification(`Connection Failed: ${errorMsg}. Reverting to Mock.`);
+                        setDataSource('mock'); 
+                        setData(MOCK_DATA); 
+                    }
+                } else {
+                    setNotification("Loading Mock Data...");
+                    await new Promise(resolve => setTimeout(resolve, 600));
+                    setData(MOCK_DATA);
+                }
+                setIsLoading(false);
+                setTimeout(() => setNotification(null), 5000);
+            };
+
+            useEffect(() => { fetchData(); }, [dataSource, apiEndpoint]);
+
+            const filteredData = useMemo(() => {
+                return data.filter(item => {
+                    const matchProv = province === 'all' || item.province === province;
+                    const matchGender = gender === 'all' || item.gender === gender;
+                    const matchDate = roundDate === 'all' || item.round_date === roundDate;
+                    return matchProv && matchGender && matchDate;
+                });
+            }, [data, province, gender, roundDate]);
+
+            // --- EXPORT FUNCTION ---
+            const handleExport = () => {
+                setNotification('Exporting Customer Data...');
+                if (!filteredData || filteredData.length === 0) {
+                    setNotification('No data to export.');
+                    setTimeout(() => setNotification(null), 3000);
+                    return;
+                }
+                const headers = ["ID", "Customer Name", "Province", "Gender", "Age", "Round Date", "Tickets Bought", "Total Wins", "Segment", "Last Prize"];
+                const csvRows = [
+                    headers.join(','),
+                    ...filteredData.map(row => [
+                        row.id, `"${row.customer}"`, `"${row.province}"`, row.gender, row.age, row.round_date, row.tickets_bought, row.total_wins, `"${row.segment}"`, `"${row.last_prize}"`
+                    ].join(','))
+                ];
+                const csvString = csvRows.join('\n');
+                const bom = '\uFEFF'; 
+                const blob = new Blob([bom + csvString], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'lucky_customers_export.csv');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => setNotification(null), 3000);
+            };
+
+            const handleAnalyzeCustomer = async (customer, templateKey) => {
+                if (!apiKey) {
+                    setShowSettingsModal(true);
+                    return;
+                }
+
+                // If templateKey is passed, switch template. Else use current state's template.
+                const selectedTemplate = templateKey || aiModal.template;
+                const tmplDef = PROMPT_TEMPLATES[selectedTemplate];
+
+                // If custom template is selected, just update state to show input, don't auto-generate yet
+                if (tmplDef.isCustom) {
+                    setAiModal(prev => ({ 
+                        ...prev, 
+                        open: true, 
+                        data: customer, 
+                        template: selectedTemplate,
+                        result: '', // Clear previous result
+                        loading: false 
+                    }));
+                    return;
+                }
+
+                // Standard templates: Generate immediately
+                setAiModal(prev => ({ ...prev, open: true, data: customer, result: '', loading: true, template: selectedTemplate }));
+                
+                const prompt = tmplDef.prompt(customer);
+                try {
+                    const result = await callGeminiAPI(prompt, apiKey);
+                    setAiModal(prev => ({ ...prev, result: result, loading: false }));
+                } catch (error) {
+                    let errorMsg = error.message;
+                    if (errorMsg.includes("leaked") || errorMsg.includes("API Key Invalid")) {
+                        setApiKey('');
+                        localStorage.removeItem('gemini_api_key');
+                        setTimeout(() => setShowSettingsModal(true), 800);
+                        errorMsg = "⚠️ **API Key Error**\n\nGoogle has flagged this key. Please generate a new one.";
+                    }
+                    setAiModal(prev => ({ ...prev, result: errorMsg, loading: false }));
+                }
+            };
+
+            const handleGenerateCustom = async () => {
+                if (!aiModal.customPrompt.trim()) return;
+                setAiModal(prev => ({ ...prev, loading: true }));
+                
+                // Append customer context to the user's custom prompt
+                const customerContext = `\n\nContext: Customer Profile - Name: ${aiModal.data.customer}, Age: ${aiModal.data.age}, Province: ${aiModal.data.province}, Wins: ${aiModal.data.total_wins}. Output in Thai.`;
+                const fullPrompt = aiModal.customPrompt + customerContext;
+
+                try {
+                    const result = await callGeminiAPI(fullPrompt, apiKey);
+                    setAiModal(prev => ({ ...prev, result: result, loading: false }));
+                } catch (error) {
+                    setAiModal(prev => ({ ...prev, result: `Error: ${error.message}`, loading: false }));
+                }
+            };
+
+            const handleSaveSettings = () => {
+                const inputKey = document.getElementById('apiKeyInput').value;
+                const inputUrl = document.getElementById('apiUrlInput').value;
+                
+                const cleanKey = inputKey.trim();
+                const cleanUrl = inputUrl.trim();
+
+                if (cleanKey) {
+                    setApiKey(cleanKey);
+                    localStorage.setItem('gemini_api_key', cleanKey);
+                }
+                
+                if (cleanUrl) {
+                    setApiEndpoint(cleanUrl);
+                    localStorage.setItem('api_endpoint', cleanUrl);
+                }
+
+                setShowSettingsModal(false);
+                setNotification("Settings Saved Successfully!");
+                setTimeout(() => setNotification(null), 3000);
+            };
+
+            // ADDED: Reset settings function
+            const handleResetSettings = () => {
+                const defaultUrl = 'https://my-api-service-61827023210.asia-southeast1.run.app/api/customers';
+                setApiEndpoint(defaultUrl);
+                localStorage.setItem('api_endpoint', defaultUrl);
+                
+                // Update input field manually if modal is open
+                const inputUrl = document.getElementById('apiUrlInput');
+                if(inputUrl) inputUrl.value = defaultUrl;
+                
+                setNotification("Restored Cloud Run URL Default");
+            };
+
+            const fmtNumber = (num) => new Intl.NumberFormat('th-TH').format(num);
+
+            return (
+                <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans flex flex-col md:flex-row selection:bg-emerald-100 selection:text-emerald-700">
+                    <aside className="w-full md:w-72 bg-white flex-shrink-0 flex flex-col h-screen sticky top-0 border-r border-slate-100 shadow-[4px_0_24px_-12px_rgba(0,0,0,0.1)] z-20">
+                        <div className="p-8">
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                                    <Icons.Trophy size={20} fill="currentColor" className="text-white/90" />
+                                </div>
+                                <div>
+                                    <h1 className="font-bold text-xl tracking-tight text-slate-900">LuckyCRM</h1>
+                                    <p className="text-[10px] font-semibold text-emerald-600 uppercase tracking-widest">Pro Edition</p>
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <SidebarItem icon={<Icons.LayoutGrid size={20} />} label="Dashboard" active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')} />
+                                <SidebarItem icon={<Icons.Users size={20} />} label="Customer List" active={activeTab === 'report'} onClick={() => setActiveTab('report')} />
+                                <SidebarItem icon={<Icons.Database size={20} />} label="Data Schema" active={activeTab === 'dictionary'} onClick={() => setActiveTab('dictionary')} />
+                            </div>
+                        </div>
+                        <div className="mt-auto p-6 border-t border-slate-50 mx-4 mb-4">
+                            <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors" onClick={() => setShowSettingsModal(true)}>
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm border-2 border-white shadow-sm ${apiKey ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-500'}`}>
+                                        <Icons.Settings size={18} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-bold text-slate-800 truncate">Settings</p>
+                                        <p className="text-xs text-slate-500 truncate">{apiKey ? 'Connected' : 'Setup API'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <main className="flex-1 overflow-y-auto relative">
+                        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-emerald-50/50 to-transparent -z-10" />
+                        <div className="max-w-7xl mx-auto p-6 md:p-10">
+                            <div className="flex flex-col xl:flex-row xl:items-end justify-between mb-10 gap-6">
+                                <div>
+                                    <h2 className="text-3xl font-bold text-slate-900 tracking-tight">
+                                        {activeTab === 'dashboard' ? 'Overview Analytics' : activeTab === 'report' ? 'Lucky Customer Insights' : 'Data Schema'}
+                                    </h2>
+                                    <p className="text-slate-500 mt-2 text-lg font-light">
+                                        {activeTab === 'dashboard' ? 'Sales trends and winning distribution.' : activeTab === 'report' ? 'List of customers with high winning frequency.' : 'Definition of customer attributes.'}
+                                    </p>
+                                </div>
+                                <div className="bg-white p-1.5 rounded-xl border border-slate-200 shadow-sm mt-4 xl:mt-12 w-fit">
+                                    <div className="flex items-center gap-1">
+                                        <button onClick={() => setDataSource('mock')} className={`px-5 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${dataSource === 'mock' ? 'bg-slate-800 text-white shadow-md transform scale-105' : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'}`}>
+                                            <Icons.Database size={14} /> MOCK
+                                        </button>
+                                        <button onClick={() => setDataSource('live')} className={`px-5 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${dataSource === 'live' ? 'bg-emerald-600 text-white shadow-md transform scale-105 ring-2 ring-emerald-200 ring-offset-1' : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'}`}>
+                                            <Icons.Zap size={14} className={dataSource === 'live' ? 'fill-current' : ''} /> LIVE API
+                                            {dataSource === 'live' && <span className="flex h-2 w-2 relative ml-1"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span></span>}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {notification && (
+                                <div className="fixed bottom-8 right-8 z-50 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 animate-in slide-in-from-bottom-5">
+                                    <Icons.RefreshCw className="animate-spin text-emerald-400" size={24} />
+                                    <div><p className="font-medium">System Notification</p><p className="text-xs text-slate-400">{notification}</p></div>
+                                </div>
+                            )}
+
+                            {activeTab === 'dashboard' && <DashboardView data={data} />}
+
+                            {activeTab === 'report' && (
+                                <div className="space-y-8 animate-in slide-in-from-bottom-5 fade-in duration-500">
+                                    <div className="bg-white rounded-3xl p-1 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col lg:flex-row">
+                                        <div className="flex-1 p-5 border-b lg:border-b-0 lg:border-r border-slate-100">
+                                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 block flex items-center gap-2"><Icons.MapPin size={14} /> Province</label>
+                                            <div className="relative group">
+                                                <select className="w-full bg-slate-50 border-none rounded-xl py-2.5 pl-4 pr-10 text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500/20 cursor-pointer appearance-none group-hover:bg-slate-100 transition-colors" value={province} onChange={(e) => setProvince(e.target.value)}>
+                                                    <option value="all">All Provinces</option>
+                                                    <option value="สมุทรปราการ">สมุทรปราการ</option>
+                                                    <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                                                    <option value="เชียงใหม่">เชียงใหม่</option>
+                                                    <option value="ขอนแก่น">ขอนแก่น</option>
+                                                </select>
+                                                <Icons.ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
+                                            </div>
+                                        </div>
+                                        <div className="flex-1 p-5 border-b lg:border-b-0 lg:border-r border-slate-100">
+                                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 block flex items-center gap-2"><Icons.Users size={14} /> Gender</label>
+                                            <div className="relative group">
+                                                <select className="w-full bg-slate-50 border-none rounded-xl py-2.5 pl-4 pr-10 text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500/20 cursor-pointer appearance-none group-hover:bg-slate-100 transition-colors" value={gender} onChange={(e) => setGender(e.target.value)}>
+                                                    <option value="all">All Genders</option>
+                                                    <option value="MALE">Male</option>
+                                                    <option value="FEMALE">Female</option>
+                                                </select>
+                                                <Icons.ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
+                                            </div>
+                                        </div>
+                                        <div className="flex-1 p-5 border-b lg:border-b-0 lg:border-r border-slate-100">
+                                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 block flex items-center gap-2"><Icons.Calendar size={14} /> Round Date</label>
+                                            <div className="relative group">
+                                                <select className="w-full bg-slate-50 border-none rounded-xl py-2.5 pl-4 pr-10 text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500/20 cursor-pointer appearance-none group-hover:bg-slate-100 transition-colors" value={roundDate} onChange={(e) => setRoundDate(e.target.value)}>
+                                                    <option value="all">All Rounds</option>
+                                                    {uniqueRounds.map(date => (<option key={date} value={date}>{date}</option>))}
+                                                </select>
+                                                <Icons.ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden flex flex-col min-h-[500px]">
+                                        <div className="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-white sticky top-0 z-10">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-2 h-8 bg-emerald-500 rounded-full"></div>
+                                                <h3 className="text-lg font-bold text-slate-800">Target Customers</h3>
+                                                <span className="bg-emerald-50 text-emerald-600 text-xs font-bold px-2 py-1 rounded-md border border-emerald-100">{filteredData.length} Found</span>
+                                            </div>
+                                            {/* EXPORT BUTTON */}
+                                            <button 
+                                                onClick={handleExport}
+                                                disabled={filteredData.length === 0}
+                                                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
+                                                    filteredData.length === 0 
+                                                    ? 'bg-slate-50 text-slate-300 cursor-not-allowed' 
+                                                    : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100 hover:scale-105'
+                                                }`}
+                                            >
+                                                <Icons.DownloadCloud size={18} />
+                                                Export List
+                                            </button>
+                                        </div>
+                                        <div className="flex-1 overflow-x-auto p-2">
+                                            {isLoading ? (
+                                                <div className="h-96 flex flex-col items-center justify-center gap-4 animate-pulse">
+                                                    <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center"><Icons.RefreshCw className="animate-spin text-emerald-500" size={24} /></div>
+                                                    <p className="text-slate-400 font-medium">Loading customer data...</p>
+                                                </div>
+                                            ) : filteredData.length === 0 ? (
+                                                <div className="h-96 flex flex-col items-center justify-center gap-6 text-center">
+                                                    <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center shadow-inner"><Icons.Filter size={40} className="text-slate-300" /></div>
+                                                    <div><h4 className="text-slate-900 font-bold text-lg">No Data</h4><p className="text-slate-400 mt-1">Try adjusting your filters.</p></div>
+                                                </div>
+                                            ) : (
+                                                <table className="w-full text-sm text-left border-collapse">
+                                                    <thead>
+                                                        <tr className="text-slate-400 border-b border-slate-50">
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px] pl-8">Customer Name</th>
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px]">Province / Age</th>
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px]">Latest Round</th>
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px] text-right">Tickets (Round)</th>
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px] text-right">Total Wins</th>
+                                                            <th className="px-6 py-4 font-semibold uppercase tracking-wider text-[11px] text-center pr-8">AI Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {filteredData.map((row) => (
+                                                            <tr key={row.id} className="group hover:bg-slate-50/80 transition-all duration-200">
+                                                                <td className="px-6 py-5 pl-8">
+                                                                    <div className="font-bold text-slate-700">{row.customer}</div>
+                                                                    <div className="flex items-center gap-2 mt-1">
+                                                                        <span className={`w-2 h-2 rounded-full ${row.gender === 'MALE' ? 'bg-blue-400' : 'bg-pink-400'}`}></span>
+                                                                        <span className="text-xs text-slate-500 font-medium">{row.gender}</span>
+                                                                    </div>
+                                                                </td>
+                                                                <td className="px-6 py-5"><div className="font-medium text-slate-600 flex flex-col"><span>{row.province}</span><span className="text-xs text-slate-400">Age: {row.age}</span></div></td>
+                                                                <td className="px-6 py-5"><div className="flex items-center gap-2 text-slate-600 font-mono bg-slate-100 w-fit px-2 py-1 rounded"><Icons.Calendar size={12} /> {row.round_date}</div></td>
+                                                                <td className="px-6 py-5 text-right"><div className="flex items-center justify-end gap-2 text-slate-700 font-bold"><Icons.Ticket size={16} className="text-emerald-500" />{fmtNumber(row.tickets_bought)}</div></td>
+                                                                <td className="px-6 py-5 text-right"><div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-50 border border-yellow-200 rounded-full"><Icons.Trophy size={14} className="text-yellow-600" /><span className="font-bold text-yellow-700">{row.total_wins} / 25</span></div></td>
+                                                                <td className="px-6 py-5 text-center pr-8">
+                                                                    <button onClick={() => handleAnalyzeCustomer(row, 'tiktok')} className="inline-flex items-center justify-center p-2 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 hover:scale-110 transition-all shadow-sm border border-indigo-100 group-hover:border-indigo-200" title="Generate AI Insight"><Icons.Sparkles size={18} /></button>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeTab === 'dictionary' && (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in slide-in-from-bottom-5 fade-in duration-500">
+                                    {DICTIONARY_DATA.map((item, idx) => (
+                                        <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                                            <div className="flex justify-between items-start mb-4">
+                                                <h3 className="text-xl font-bold text-slate-800 font-mono">{item.field}</h3>
+                                                <span className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full text-[10px] font-bold uppercase tracking-wide border border-emerald-100">{item.source}</span>
+                                            </div>
+                                            <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </main>
+
+                    {showSettingsModal && (
+                        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 animate-in zoom-in-95 duration-200">
+                                <div className="flex justify-between items-center mb-6">
+                                    <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Icons.Settings className="text-emerald-500" size={20} /> App Settings</h3>
+                                    <button onClick={() => setShowSettingsModal(false)} className="text-slate-400 hover:text-slate-600"><Icons.X size={20} /></button>
+                                </div>
+                                
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Gemini API Key</label>
+                                        <input type="password" placeholder="Paste your Google AI Key here..." className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none" defaultValue={apiKey} id="apiKeyInput" />
+                                        <p className="text-[10px] text-slate-400 mt-1">Required for AI features.</p>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-bold text-slate-500 uppercase mb-2">Backend API URL</label>
+                                        <input type="text" placeholder="https://your-api.run.app/data" className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none font-mono text-sm" defaultValue={apiEndpoint} id="apiUrlInput" />
+                                        <p className="text-[10px] text-slate-400 mt-1">Default: https://my-api-service...run.app/data</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-between items-center mt-8 pt-4 border-t border-slate-100">
+                                    <button 
+                                        onClick={handleResetSettings}
+                                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
+                                    >
+                                        <Icons.RefreshCcw size={14} /> Reset to Default
+                                    </button>
+                                    <button onClick={handleSaveSettings} className="px-6 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 shadow-lg shadow-emerald-200">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {aiModal.open && (
+                        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200">
+                                <div className="p-6 border-b border-slate-100 flex justify-between items-start bg-gradient-to-r from-indigo-50 to-white rounded-t-2xl">
+                                    <div>
+                                        <div className="flex items-center gap-2 mb-1"><span className="bg-indigo-100 text-indigo-700 text-xs font-bold px-2 py-0.5 rounded-full border border-indigo-200">AI Analysis</span><span className="text-xs text-slate-400">Powered by Gemini</span></div>
+                                        <h3 className="text-xl font-bold text-slate-800">{aiModal.data?.customer}</h3>
+                                        <div className="flex gap-2 mt-4">
+                                            {Object.entries(PROMPT_TEMPLATES).map(([key, tmpl]) => (
+                                                <button key={key} onClick={() => handleAnalyzeCustomer(aiModal.data, key)} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${aiModal.template === key ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-500 border-slate-200 hover:border-indigo-300'}`}>{tmpl.icon} {tmpl.label}</button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <button onClick={() => setAiModal({ ...aiModal, open: false })} className="text-slate-400 hover:text-slate-600"><Icons.X size={24} /></button>
+                                </div>
+                                <div className="p-8 overflow-y-auto flex-1 bg-slate-50/50">
+                                    {PROMPT_TEMPLATES[aiModal.template].isCustom && !aiModal.result && !aiModal.loading ? (
+                                        <div className="space-y-4">
+                                            <p className="text-sm text-slate-500">Enter your custom instruction for AI below. The system will automatically attach the customer's profile.</p>
+                                            <textarea 
+                                                className="w-full h-32 p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                                                placeholder="Example: Write a short congratulation message for this customer..."
+                                                value={aiModal.customPrompt}
+                                                onChange={(e) => setAiModal(prev => ({ ...prev, customPrompt: e.target.value }))}
+                                            ></textarea>
+                                            <div className="flex justify-end">
+                                                <button 
+                                                    onClick={handleGenerateCustom}
+                                                    disabled={!aiModal.customPrompt}
+                                                    className={`px-6 py-2 rounded-lg font-bold text-white transition-all ${!aiModal.customPrompt ? 'bg-slate-300 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200'}`}
+                                                >
+                                                    Generate Content
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : aiModal.loading ? (
+                                        <div className="flex flex-col items-center justify-center h-48 gap-4">
+                                            <div className="w-12 h-12 border-4 border-indigo-100 border-t-indigo-500 rounded-full animate-spin"></div>
+                                            <p className="text-indigo-600 font-medium animate-pulse">Generating Content...</p>
+                                        </div>
+                                    ) : (
+                                        <div className="prose prose-slate max-w-none markdown-prose" dangerouslySetInnerHTML={{ __html: marked.parse(aiModal.result) }}></div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
