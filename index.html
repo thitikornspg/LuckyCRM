@@ -679,7 +679,7 @@
             const [dataSource, setDataSource] = useState('mock'); 
             
             // SMART DEFAULT URL: Updated to your new Cloud Run URL (Asia Southeast) - Final
-            const defaultUrl = 'https://my-api-service-61827023210.asia-southeast1.run.app/api/customers';
+            const defaultUrl = 'https://my-api-service-61827023210.asia-southeast1.run.app/api/';
             const [apiEndpoint, setApiEndpoint] = useState(() => {
                 const saved = localStorage.getItem('api_endpoint');
                 // Always force default if saved is old render/localhost/other region/wrong endpoint to prevent confusion
