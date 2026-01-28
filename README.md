@@ -111,7 +111,7 @@ CORS Middleware: มีการตั้งค่า allow_origins=["*"] เพ
 
 AI Integration Strategy
 
-ระบบใช้ Google Gemini 2.0 Flash ในการวิเคราะห์ข้อมูล โดยมีการทำ Prompt Engineering ไว้ล่วงหน้า 2 รูปแบบ:
+ระบบใช้ Google gemini-2.5-flash-preview-09-2025 ในการวิเคราะห์ข้อมูล โดยมีการทำ Prompt Engineering ไว้ล่วงหน้า 2 รูปแบบ:
 
 TikTok Viral Key Content: สั่งให้ AI รับบทเป็น Marketing Strategist วิเคราะห์โปรไฟล์ลูกค้าแล้วคิด Hook, Script, และ Visual Idea สำหรับถ่ายทำคลิปสั้น
 
@@ -119,4 +119,5 @@ Expert Marketing Strategy: สั่งให้ AI วิเคราะห์ 
 
 📝 Author & Acknowledgements
 
-Developed by: [ชื่อของคุณ / ทีมของคุณ] Powered by: Databricks, Google Cloud Platform, and Gemini AI.
+Thitikorn Sapanguen 
+Databricks, Google Cloud Platform, and Gemini AI.
